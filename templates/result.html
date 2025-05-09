@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tracking Results</title>
+</head>
+<body>
+    <h1>Tracking Results</h1>
+    <video width="640" height="480" controls>
+        <source src="/video" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <br>
+    <a href="/video" download>Download Output Video</a>
+    <h2>Metrics:</h2>
+    <p>Total unique objects: <b>{{ metrics.total_objects }}</b></p>
+    <p>Processing time: <b>{{ "%.2f"|format(processing_time) }} seconds</b></p>
+    <h3>Object Durations (seconds):</h3>
+    <ul>
+        {% for tid, duration in metrics.object_durations.items() %}
+            <li>Object {{ tid }}: {{ "%.2f"|format(duration) }}</li>
+        {% endfor %}
+    </ul>
+    <p><a href="/">Back</a></p>
+</body>
+</html>
+
+
